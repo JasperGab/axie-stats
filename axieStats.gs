@@ -1,20 +1,18 @@
 /*====================================================================================================================================*
   Get Axie Stats by Jasper Gabriel (KS Hyun-)
   ====================================================================================================================================
-  Version:      1.0.0
-  Project Page: https://github.com/jasperg/ (WIP)
-  Copyright:    (c) 2021 by Jasper Gabriel
-  License:      GNU General Public License, version 3 (GPL-3.0) 
-                http://www.opensource.org/licenses/gpl-3.0.html
+  Version:       1.0.0
+  Project Page:  https://github.com/JasperGab/axie-stats
+  Copyright:     (c) 2021 by Jasper Gabriel
+  License:       GNU General Public License, version 3 (GPL-3.0) 
+                 http://www.opensource.org/licenses/gpl-3.0.html
   Ronin Address: ronin:549577812f53a0f49507eb443dc9dfcd20308ab0
   ------------------------------------------------------------------------------------------------------------------------------------
-  A function to get axie stats for my axie damage calculator google sheet.
+  A set of custom functions to get axie stats for custom axie damage calculator google sheet.
   
   This function utilizes Sky Mavis' APIs.
-
-  For future enhancements see https://github.com/jasperg/
   
-  For bug reports see https://github.com/jasperg//issues
+  For bug reports see https://github.com/JasperGab/axie-stats/issues
   ------------------------------------------------------------------------------------------------------------------------------------
   Changelog:
 
