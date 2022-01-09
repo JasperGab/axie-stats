@@ -1,12 +1,12 @@
 # axie-stats
 Custom Apps Script functions intended for use with a custom google sheet.
 
-## Version 1.0.0 (Initial Release)
+## Version 1.1.0
 
 ## Instructions on how to use:
 
 ### Getting a Copy of the Custom Spreadsheet
-- Get [Custom Spreadsheet](https://docs.google.com/spreadsheets/d/1pifHd8NGsg0qhCq5VkByHXF9i9_HUUWfO7a3e3cXqzo/edit?usp=sharing)
+- Get [Custom Spreadsheet](https://docs.google.com/spreadsheets/d/1gW6pS5AWxOlw2DHKKuNactKM-YlcM9OU3v6JXeupdkA/edit?usp=sharing)
 - Copy template to new spreadsheet for personal use
 
 ### Adding Custom Apps Script
@@ -23,6 +23,8 @@ Custom Apps Script functions intended for use with a custom google sheet.
 - discord: **KS Hyun-#3759**
 
 #### Ronin Address
-- ronin:549577812f53a0f49507eb443dc9dfcd20308ab0
+- ronin:16aa6b0d2bfb0d1cfa74f5dfbc765408896720c2
 
+#### Ethereum/BSC Address
+- 0x994CCa07C9f25Fe84211eA61b61EaB5552A32c6d
 
