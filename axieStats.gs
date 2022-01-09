@@ -1,22 +1,26 @@
 /*====================================================================================================================================*
   Get Axie Stats by Jasper Gabriel (KS Hyun-)
   ====================================================================================================================================
-  Version:       1.0.0
-  Project Page:  https://github.com/JasperGab/axie-stats
-  Copyright:     (c) 2021 by Jasper Gabriel
-  License:       GNU General Public License, version 3 (GPL-3.0) 
-                 http://www.opensource.org/licenses/gpl-3.0.html
-  Ronin Address: ronin:549577812f53a0f49507eb443dc9dfcd20308ab0
+  Version:         1.1.0
+  Project Page:    https://github.com/JasperGab/axie-stats
+  Copyright:       (c) 2021 by Jasper Gabriel
+  License:         GNU General Public License, version 3 (GPL-3.0) 
+                   http://www.opensource.org/licenses/gpl-3.0.html
+  Ronin Address:   ronin:16aa6b0d2bfb0d1cfa74f5dfbc765408896720c2
+  ETH/BSC Address: 0x994CCa07C9f25Fe84211eA61b61EaB5552A32c6d
   ------------------------------------------------------------------------------------------------------------------------------------
-  A set of custom functions to get axie stats for custom axie damage calculator google sheet.
+  A function to get axie stats for my axie damage calculator google sheet.
   
   This function utilizes Sky Mavis' APIs.
+
+  For future enhancements see https://github.com/jasperg/
   
   For bug reports see https://github.com/JasperGab/axie-stats/issues
   ------------------------------------------------------------------------------------------------------------------------------------
   Changelog:
 
   1.0.0  Initial release
+  1.1.0  Include calculation for most card effect bonuses
  *====================================================================================================================================*/
 
 /**
@@ -30,8 +34,8 @@ function getAxieStats() {
   /**  
    * Replace with your Axie's ID
   **/
-  var axieId = SpreadsheetApp.getActiveSpreadsheet().getRange('B11').getValue();
-  console.log(axieId)
+  var axieId = SpreadsheetApp.getActiveSpreadsheet().getRange('B13').getValue();
+
   var url = 'https://graphql-gateway.axieinfinity.com/graphql';
   var options = {};
   options["method"] = "post";
@@ -73,59 +77,63 @@ function getAxieStats() {
   var backName = result.data.axie.parts[2].name;
   var backAttack = result.data.axie.parts[2].abilities[0].attack;
   var backDefense = result.data.axie.parts[2].abilities[0].defense;
+  // var backImage = result.data.axie.parts[2].abilities[0].backgroundUrl;
 
   var mouthClass = result.data.axie.parts[3].class;
   var mouthName = result.data.axie.parts[3].name;
   var mouthAttack = result.data.axie.parts[3].abilities[0].attack;
   var mouthDefense = result.data.axie.parts[3].abilities[0].defense;
+  // var mouthImage = result.data.axie.parts[3].abilities[0].backgroundUrl;
 
   var hornClass = result.data.axie.parts[4].class;
   var hornName = result.data.axie.parts[4].name;
   var hornAttack = result.data.axie.parts[4].abilities[0].attack;
   var hornDefense = result.data.axie.parts[4].abilities[0].defense;
+  // var hornImage = result.data.axie.parts[4].abilities[0].backgroundUrl;
 
   var tailClass = result.data.axie.parts[5].class;
   var tailName = result.data.axie.parts[5].name;
   var tailAttack = result.data.axie.parts[5].abilities[0].attack;
   var tailDefense = result.data.axie.parts[5].abilities[0].defense;
+  // var tailImage = result.data.axie.parts[5].abilities[0].backgroundUrl;
 
   /**  
    * Set Axie Info Value to Cells
   **/
-  SpreadsheetApp.getActiveSpreadsheet().getActiveSheet().getRange('A1:B9').setValue(`=image("${image}")`);
-  SpreadsheetApp.getActiveSpreadsheet().getActiveSheet().getRange('B12').setValue(name);
-  SpreadsheetApp.getActiveSpreadsheet().getActiveSheet().getRange('B13').setValue(axieClass);
-  SpreadsheetApp.getActiveSpreadsheet().getActiveSheet().getRange('B14').setValue(birthDate);
+  SpreadsheetApp.getActiveSpreadsheet().getActiveSheet().getRange('A1:C11').setValue(`=image("${image}")`);
+  SpreadsheetApp.getActiveSpreadsheet().getActiveSheet().getRange('B14').setValue(name);
+  SpreadsheetApp.getActiveSpreadsheet().getActiveSheet().getRange('B15').setValue(axieClass);
+  SpreadsheetApp.getActiveSpreadsheet().getActiveSheet().getRange('B16').setValue(birthDate);
 
   /**  
    * Set Axie Stats Value to Cells
   **/
-  SpreadsheetApp.getActiveSpreadsheet().getActiveSheet().getRange('B15').setValue(hp);
-  SpreadsheetApp.getActiveSpreadsheet().getActiveSheet().getRange('B16').setValue(speed);
-  SpreadsheetApp.getActiveSpreadsheet().getActiveSheet().getRange('B17').setValue(skill);
-  SpreadsheetApp.getActiveSpreadsheet().getActiveSheet().getRange('B18').setValue(morale);
+  SpreadsheetApp.getActiveSpreadsheet().getActiveSheet().getRange('B17').setValue(hp);
+  SpreadsheetApp.getActiveSpreadsheet().getActiveSheet().getRange('B18').setValue(speed);
+  SpreadsheetApp.getActiveSpreadsheet().getActiveSheet().getRange('B19').setValue(skill);
+  SpreadsheetApp.getActiveSpreadsheet().getActiveSheet().getRange('B20').setValue(morale);
 
   /**  
    * Set Axie Parts Value to Cells
   **/
-  SpreadsheetApp.getActiveSpreadsheet().getActiveSheet().getRange('D5').setValue(backName);
-  SpreadsheetApp.getActiveSpreadsheet().getActiveSheet().getRange('E5').setValue(backClass);
-  SpreadsheetApp.getActiveSpreadsheet().getActiveSheet().getRange('F5').setValue(backAttack);
-  // SpreadsheetApp.getActiveSpreadsheet().getActiveSheet().getRange('').setValue(backDefense);
+  SpreadsheetApp.getActiveSpreadsheet().getActiveSheet().getRange('D8').setValue(backName);
+  SpreadsheetApp.getActiveSpreadsheet().getActiveSheet().getRange('E8').setValue(backClass);
+  SpreadsheetApp.getActiveSpreadsheet().getActiveSheet().getRange('F8').setValue(backAttack);
+  // SpreadsheetApp.getActiveSpreadsheet().getActiveSheet().getRange('9').setValue(backDefense);
 
-  SpreadsheetApp.getActiveSpreadsheet().getActiveSheet().getRange('D6').setValue(mouthName);
-  SpreadsheetApp.getActiveSpreadsheet().getActiveSheet().getRange('E6').setValue(mouthClass);
-  SpreadsheetApp.getActiveSpreadsheet().getActiveSheet().getRange('F6').setValue(mouthAttack);
-  // SpreadsheetApp.getActiveSpreadsheet().getActiveSheet().getRange('B15').setValue(mouthDefense);
+  SpreadsheetApp.getActiveSpreadsheet().getActiveSheet().getRange('D9').setValue(mouthName);
+  SpreadsheetApp.getActiveSpreadsheet().getActiveSheet().getRange('E9').setValue(mouthClass);
+  SpreadsheetApp.getActiveSpreadsheet().getActiveSheet().getRange('F9').setValue(mouthAttack);
+  // SpreadsheetApp.getActiveSpreadsheet().getActiveSheet().getRange('9').setValue(mouthDefense);
 
-  SpreadsheetApp.getActiveSpreadsheet().getActiveSheet().getRange('D7').setValue(hornName);
-  SpreadsheetApp.getActiveSpreadsheet().getActiveSheet().getRange('E7').setValue(hornClass);
-  SpreadsheetApp.getActiveSpreadsheet().getActiveSheet().getRange('F7').setValue(hornAttack);
-  // SpreadsheetApp.getActiveSpreadsheet().getActiveSheet().getRange('B15').setValue(hornDefense);
+  SpreadsheetApp.getActiveSpreadsheet().getActiveSheet().getRange('D10').setValue(hornName);
+  SpreadsheetApp.getActiveSpreadsheet().getActiveSheet().getRange('E10').setValue(hornClass);
+  SpreadsheetApp.getActiveSpreadsheet().getActiveSheet().getRange('F10').setValue(hornAttack);
+  // SpreadsheetApp.getActiveSpreadsheet().getActiveSheet().getRange('B10').setValue(hornDefense);
 
-  SpreadsheetApp.getActiveSpreadsheet().getActiveSheet().getRange('D8').setValue(tailName);
-  SpreadsheetApp.getActiveSpreadsheet().getActiveSheet().getRange('E8').setValue(tailClass);
-  SpreadsheetApp.getActiveSpreadsheet().getActiveSheet().getRange('F8').setValue(tailAttack);
+  SpreadsheetApp.getActiveSpreadsheet().getActiveSheet().getRange('D11').setValue(tailName);
+  SpreadsheetApp.getActiveSpreadsheet().getActiveSheet().getRange('E11').setValue(tailClass);
+  SpreadsheetApp.getActiveSpreadsheet().getActiveSheet().getRange('F11').setValue(tailAttack);
   // SpreadsheetApp.getActiveSpreadsheet().getActiveSheet().getRange('B15').setValue(tailDefense);
 
   return result.data.axie.id;
@@ -138,46 +146,106 @@ function getAxieStats() {
  * @param {cardClass}  Class of your card
  * @param {enemyAxieClass}  Class of enemy Axie
  * @param {baseDamage}  Base damage of your card
+ * @param {skill}  Skill stat of your Axie
+ * @param {combo}  Combo if true or false
  * @return 
  * @customfunction
  **/
-function getSingleDamage(axieClass, cardClass, enemyAxieClass, baseDamage) {
+function getDamage(axieClass, cardClass, enemyAxieClass, baseDamage, skill, attackModifier, combo = false) {
   var sameClassBonus;
   var classAdvantageBonus;
+  var skillBonusDamage = 0;
 
   sameClassBonus = getSameCardAndBodyClassBonus(cardClass, axieClass);
-
   classAdvantageBonus = getClassAdvantageBonus(cardClass, enemyAxieClass);
 
-  var calculatedDamage = Math.floor(baseDamage * sameClassBonus * classAdvantageBonus)
+  if (combo && baseDamage > 0) {
+    skillBonusDamage = skill * 0.55 - 12.5;
+  }
+
+  var attackModifierBonus = 1 + (attackModifier * .2);
+
+  var calculatedDamage = Math.floor(baseDamage * sameClassBonus * classAdvantageBonus * attackModifierBonus + skillBonusDamage)
 
   return calculatedDamage;
 }
 
 /**
- * Get Axie's card damage when played in a combo (2 or more cards) in a round.
+ * Get Axie's card effect bonus damage.
  *
  * @param {axieClass}  Class of your Axie
  * @param {cardClass}  Class of your card
  * @param {enemyAxieClass}  Class of enemy Axie
  * @param {baseDamage}  Base damage of your card
  * @param {skill}  Skill stat of your Axie
+ * @param {cardName}  Name of Card
+ * @param {combo}  Combo if true or false
  * @return 
  * @customfunction
  **/
-function getComboDamage(axieClass, cardClass, enemyAxieClass, baseDamage, skill) {
+function getSpecialDamage(axieClass, cardClass, enemyAxieClass, baseDamage, skill, attackModifier, partName, combo = false) {
   var sameClassBonus;
   var classAdvantageBonus;
+  var skillBonusDamage = 0;
+  var cardEffectBonusDamage = 1;
 
   sameClassBonus = getSameCardAndBodyClassBonus(cardClass, axieClass);
-
   classAdvantageBonus = getClassAdvantageBonus(cardClass, enemyAxieClass);
 
-  // * old formula
-  // var skillBonusDamage = Math.floor(skill * baseDamage / 500);
-  var skillBonusDamage = baseDamage != 0 ? skill * 0.55 - 12.5 : 0;
+  if (combo && baseDamage > 0) {
+    skillBonusDamage = skill * 0.55 - 12.5;
+  }
 
-  var calculatedDamage = Math.floor(baseDamage * sameClassBonus * classAdvantageBonus + skillBonusDamage)
+  // Fix Pocky and Bug Splat
+  if (partName == 'Thorny Caterpillar') {
+    cardEffectBonusDamage = 1.3;
+  } else if (partName == 'Cactus') {
+    cardEffectBonusDamage = 1.2;
+  } else if (partName == 'Lam') {
+    cardEffectBonusDamage = 1.2;
+  } else if (partName == 'Nut Cracker') {
+    cardEffectBonusDamage = 1.2;
+  } else if (partName == 'Nut Cracker') {
+    cardEffectBonusDamage = 1.2;
+  } else if (partName == 'Scaly Spear') {
+    cardEffectBonusDamage = 1.2;
+  } else if (partName == 'Trump') {
+    cardEffectBonusDamage = 1.2;
+  } else if (partName == 'Tiny Dino') {
+    cardEffectBonusDamage = 1.5;
+  } else if (partName == 'Pupae') {
+    cardEffectBonusDamage = 2;
+  } else if (partName == 'Beech') {
+    cardEffectBonusDamage = 1.2;
+  } else if (partName == 'Babylonia') {
+    cardEffectBonusDamage = 1.3;
+  } else if (partName == 'Feather Spear') {
+    cardEffectBonusDamage = 1.2;
+  } else if (partName == 'Swallow') {
+    cardEffectBonusDamage = 1.2;
+  } else if (partName == 'Navaga') {
+    cardEffectBonusDamage = 1.2;
+  } else if (partName == 'Pliers') {
+    cardEffectBonusDamage = 1.3;
+  } else if (partName == 'Risky Beast') {
+    cardEffectBonusDamage = 1.5;
+  } else if (partName == 'Pocky') {
+    cardEffectBonusDamage = 1.2;
+  } else if (partName == 'Cerastes') {
+    cardEffectBonusDamage = 1.3;
+  } else if (partName == 'Square Teeth') {
+    cardEffectBonusDamage = 2;
+  // } else if (partName == 'Furball') {
+  // } else if (partName == 'Twin Tail') {
+  // } else if (partName == 'Ronin') {
+  // } else if (partName == 'Sandal') {
+  } else {
+    return 'n/a';
+  }
+
+  var attackModifierBonus = 1 + (attackModifier * .2);
+
+  var calculatedDamage = Math.floor(baseDamage * sameClassBonus * classAdvantageBonus * attackModifierBonus * cardEffectBonusDamage + skillBonusDamage)
 
   return calculatedDamage;
 }
