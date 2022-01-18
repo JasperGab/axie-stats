@@ -1,7 +1,12 @@
 # axie-stats
 Custom Apps Script functions intended for use with a custom google sheet.
 
-## Version 1.1.0
+## Version 1.1.1
+
+### Changelog:
+- 1.0.0  Initial release
+- 1.1.0  Include calculation for most card effect bonuses
+- 1.1.1  Update skill calculations with S20 changes
 
 ## Instructions on how to use:
 
