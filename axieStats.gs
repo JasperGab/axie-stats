@@ -1,7 +1,7 @@
 /*====================================================================================================================================*
   Get Axie Stats by Jasper Gabriel (KS Hyun-)
   ====================================================================================================================================
-  Version:         1.1.0
+  Version:         1.1.1
   Project Page:    https://github.com/JasperGab/axie-stats
   Copyright:       (c) 2021 by Jasper Gabriel
   License:         GNU General Public License, version 3 (GPL-3.0) 
@@ -21,6 +21,7 @@
 
   1.0.0  Initial release
   1.1.0  Include calculation for most card effect bonuses
+  1.1.1  Update skill calculations with S20 changes
  *====================================================================================================================================*/
 
 /**
@@ -154,18 +155,20 @@ function getAxieStats() {
 function getDamage(axieClass, cardClass, enemyAxieClass, baseDamage, skill, attackModifier, combo = false) {
   var sameClassBonus;
   var classAdvantageBonus;
-  var skillBonusDamage = 0;
+  var skillBonusDamage = 1;
 
+  // STAB (Same Type Attack Bonus)
   sameClassBonus = getSameCardAndBodyClassBonus(cardClass, axieClass);
+  // RPS (Rock Paper Scissors Advantage)
   classAdvantageBonus = getClassAdvantageBonus(cardClass, enemyAxieClass);
 
   if (combo && baseDamage > 0) {
-    skillBonusDamage = skill * 0.55 - 12.5;
+    skillBonusDamage = 1 + (skill * 0.55 - 12.25)/100;
   }
 
   var attackModifierBonus = 1 + (attackModifier * .2);
-
-  var calculatedDamage = Math.floor(baseDamage * sameClassBonus * classAdvantageBonus * attackModifierBonus + skillBonusDamage)
+  
+  var calculatedDamage = Math.floor(baseDamage * skillBonusDamage * sameClassBonus * classAdvantageBonus * attackModifierBonus)
 
   return calculatedDamage;
 }
