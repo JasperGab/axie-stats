@@ -189,14 +189,16 @@ function getDamage(axieClass, cardClass, enemyAxieClass, baseDamage, skill, atta
 function getSpecialDamage(axieClass, cardClass, enemyAxieClass, baseDamage, skill, attackModifier, partName, combo = false) {
   var sameClassBonus;
   var classAdvantageBonus;
-  var skillBonusDamage = 0;
+  var skillBonusDamage = 1;
   var cardEffectBonusDamage = 1;
 
+  // STAB (Same Type Attack Bonus)
   sameClassBonus = getSameCardAndBodyClassBonus(cardClass, axieClass);
+  // RPS (Rock Paper Scissors Advantage)
   classAdvantageBonus = getClassAdvantageBonus(cardClass, enemyAxieClass);
 
   if (combo && baseDamage > 0) {
-    skillBonusDamage = skill * 0.55 - 12.5;
+    skillBonusDamage = 1 + (skill * 0.55 - 12.25)/100;
   }
 
   // Fix Pocky and Bug Splat
@@ -248,7 +250,7 @@ function getSpecialDamage(axieClass, cardClass, enemyAxieClass, baseDamage, skil
 
   var attackModifierBonus = 1 + (attackModifier * .2);
 
-  var calculatedDamage = Math.floor(baseDamage * sameClassBonus * classAdvantageBonus * attackModifierBonus * cardEffectBonusDamage + skillBonusDamage)
+  var calculatedDamage = Math.floor(baseDamage * skillBonusDamage * sameClassBonus * classAdvantageBonus * attackModifierBonus * cardEffectBonusDamage)
 
   return calculatedDamage;
 }
