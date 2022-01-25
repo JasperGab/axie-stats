@@ -8,6 +8,7 @@ Custom Apps Script functions intended for use with a custom google sheet.
 - 1.1.0  Include calculation for most card effect bonuses
 - 1.1.1  Update skill calculations with S20 changes
 - 1.1.2  Update skill calculations with S20 tweaks
+- 1.1.3. Add shield to table
 
 ## Instructions on how to use:
 

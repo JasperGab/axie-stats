@@ -1,7 +1,7 @@
 /*====================================================================================================================================*
   Get Axie Stats by Jasper Gabriel (KS Hyun-)
   ====================================================================================================================================
-  Version:         1.1.2
+  Version:         1.1.3
   Project Page:    https://github.com/JasperGab/axie-stats
   Copyright:       (c) 2021 by Jasper Gabriel
   License:         GNU General Public License, version 3 (GPL-3.0) 
@@ -23,6 +23,7 @@
   1.1.0  Include calculation for most card effect bonuses
   1.1.1  Update skill calculations with S20 changes
   1.1.2  Update skill calculations with S20 tweaks
+  1.1.3. Add shield to table
  *====================================================================================================================================*/
 
 /**
@@ -121,22 +122,22 @@ function getAxieStats() {
   SpreadsheetApp.getActiveSpreadsheet().getActiveSheet().getRange('D8').setValue(backName);
   SpreadsheetApp.getActiveSpreadsheet().getActiveSheet().getRange('E8').setValue(backClass);
   SpreadsheetApp.getActiveSpreadsheet().getActiveSheet().getRange('F8').setValue(backAttack);
-  // SpreadsheetApp.getActiveSpreadsheet().getActiveSheet().getRange('9').setValue(backDefense);
+  SpreadsheetApp.getActiveSpreadsheet().getActiveSheet().getRange('G8').setValue(backDefense);
 
   SpreadsheetApp.getActiveSpreadsheet().getActiveSheet().getRange('D9').setValue(mouthName);
   SpreadsheetApp.getActiveSpreadsheet().getActiveSheet().getRange('E9').setValue(mouthClass);
   SpreadsheetApp.getActiveSpreadsheet().getActiveSheet().getRange('F9').setValue(mouthAttack);
-  // SpreadsheetApp.getActiveSpreadsheet().getActiveSheet().getRange('9').setValue(mouthDefense);
+  SpreadsheetApp.getActiveSpreadsheet().getActiveSheet().getRange('G9').setValue(mouthDefense);
 
   SpreadsheetApp.getActiveSpreadsheet().getActiveSheet().getRange('D10').setValue(hornName);
   SpreadsheetApp.getActiveSpreadsheet().getActiveSheet().getRange('E10').setValue(hornClass);
   SpreadsheetApp.getActiveSpreadsheet().getActiveSheet().getRange('F10').setValue(hornAttack);
-  // SpreadsheetApp.getActiveSpreadsheet().getActiveSheet().getRange('B10').setValue(hornDefense);
+  SpreadsheetApp.getActiveSpreadsheet().getActiveSheet().getRange('G10').setValue(hornDefense);
 
   SpreadsheetApp.getActiveSpreadsheet().getActiveSheet().getRange('D11').setValue(tailName);
   SpreadsheetApp.getActiveSpreadsheet().getActiveSheet().getRange('E11').setValue(tailClass);
   SpreadsheetApp.getActiveSpreadsheet().getActiveSheet().getRange('F11').setValue(tailAttack);
-  // SpreadsheetApp.getActiveSpreadsheet().getActiveSheet().getRange('B15').setValue(tailDefense);
+  SpreadsheetApp.getActiveSpreadsheet().getActiveSheet().getRange('G11').setValue(tailDefense);
 
   return result.data.axie.id;
 }
