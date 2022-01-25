@@ -1,7 +1,7 @@
 /*====================================================================================================================================*
   Get Axie Stats by Jasper Gabriel (KS Hyun-)
   ====================================================================================================================================
-  Version:         1.1.1
+  Version:         1.1.2
   Project Page:    https://github.com/JasperGab/axie-stats
   Copyright:       (c) 2021 by Jasper Gabriel
   License:         GNU General Public License, version 3 (GPL-3.0) 
@@ -22,6 +22,7 @@
   1.0.0  Initial release
   1.1.0  Include calculation for most card effect bonuses
   1.1.1  Update skill calculations with S20 changes
+  1.1.2  Update skill calculations with S20 tweaks
  *====================================================================================================================================*/
 
 /**
@@ -163,7 +164,7 @@ function getDamage(axieClass, cardClass, enemyAxieClass, baseDamage, skill, atta
   classAdvantageBonus = getClassAdvantageBonus(cardClass, enemyAxieClass);
 
   if (combo && baseDamage > 0) {
-    skillBonusDamage = 1 + (skill * 0.55 - 12.25)/100;
+    skillBonusDamage = 1 + (skill * 0.55 - 12.25)/100 * 0.985;
   }
 
   var attackModifierBonus = 1 + (attackModifier * .2);
@@ -198,7 +199,7 @@ function getSpecialDamage(axieClass, cardClass, enemyAxieClass, baseDamage, skil
   classAdvantageBonus = getClassAdvantageBonus(cardClass, enemyAxieClass);
 
   if (combo && baseDamage > 0) {
-    skillBonusDamage = 1 + (skill * 0.55 - 12.25)/100;
+    skillBonusDamage = 1 + (skill * 0.55 - 12.25)/100 * 0.985;
   }
 
   // Fix Pocky and Bug Splat
